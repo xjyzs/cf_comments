@@ -18,7 +18,7 @@ export class KVStore extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
-    const id=url.searchParams.get("id");
+    const id=url.pathname.slice(1);
     const kvId = env.KV_DO.idFromName("COMMENTS");
     const obj = env.KV_DO.get(kvId);
 
