@@ -31,9 +31,9 @@ export default {
       const formData = await req.formData();
       const txt = formData.get("txt") || "";
       if (!(txt.trim()==="")){
-        let old = await kv.get(id);
+        let old = await KV.get(id);
         let newText = old ? old + "\n" + txt : txt;
-        await kv.put(id, newText);
+        await KV.put(id, newText);
       }
       return new Response(`<meta http-equiv="refresh" content="0">`, {
         headers: { "Content-Type": "text/html" },
@@ -41,7 +41,7 @@ export default {
     }
 
     try {
-      txt = await kv.get(id);
+      txt = await KV.get(id);
       txt =
         txt?.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") ??
         "暂无数据";
