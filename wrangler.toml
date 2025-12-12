@@ -1,0 +1,18 @@
+name = "durable-kv-free"
+main = "index.js"
+compatibility_date = "2025-12-12"
+
+# Durable Object 类
+[[durable_objects.classes]]
+name = "KVStore"
+class_name = "KVStore"
+
+# Durable Object 绑定
+[[durable_objects.bindings]]
+name = "KV_DO"
+class_name = "KVStore"
+
+# 免费账户必须使用 new_sqlite_classes migration
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["KVStore"]
