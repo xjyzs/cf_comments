@@ -17,9 +17,10 @@ export class KVStore extends DurableObject {
 
 export default {
   async fetch(req, env) {
-
-    const id = env.KV_DO.idFromName("CLIPBOARD");
-    const obj = env.KV_DO.get(id);
+    const url = new URL(req.url);
+    id=url.searchParams.get("id");
+    const kvId = env.KV_DO.idFromName("COMMENTS");
+    const obj = env.KV_DO.get(kvId);
 
     const KV = {
       put: (key, value) => obj.put(key, value),
