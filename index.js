@@ -33,7 +33,7 @@ export default {
       const txt = formData.get("txt") || "";
       if (!(txt.trim()==="")){
         let old = await KV.get(id);
-        let newText = old ? txt+"\n"+old +  : txt;
+        let newText = old ? txt+"\n"+old : txt;
         await KV.put(id, newText);
       }
       return new Response(`<meta http-equiv="refresh" content="0">`, {
